@@ -19,4 +19,6 @@ public interface BooksServices {
     ResponseEntity<BookDto> update(Long id, AddBookDto addBookDto);
     // delete Course
     ResponseEntity<String> remove(Long id);
+
+    List<BookDto> searchBooks(String query);
 }

@@ -47,4 +47,11 @@ public class BookController {
       return this.booksServices.remove(bookid);
    }
 
+
+   //http://localhost:8080/api/v1/book/search?query=best
+   @GetMapping("/search")
+   public ResponseEntity<List<BookDto>> searchBooks(@RequestParam String query) {
+      List<BookDto> bookDtos = booksServices.searchBooks(query);
+      return ResponseEntity.ok(bookDtos);
+   }
 }

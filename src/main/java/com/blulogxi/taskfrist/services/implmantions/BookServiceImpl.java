@@ -82,5 +82,12 @@ public class BookServiceImpl implements BooksServices {
             return new ResponseEntity<>("Book has been removed successfully",HttpStatus.NO_CONTENT);
         }
 
+        @Override
+        public List<BookDto> searchBooks(String query) {
+            List<Book> books = bookRepositories.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(query, query);
+            List<BookDto> bookDtos = books.stream().map(mapper::bookToBookDto).collect(Collectors.toList());
+            return bookDtos;
+        }
+
 
 }
