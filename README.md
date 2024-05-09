@@ -20,5 +20,6 @@
 * 5 Delete a Book: Implement an endpoint to delete a book from the database based on its unique identifier.
 * 6 Assuming we have a large number of books, say 1000, how can we allow users to retrieve a subset without affecting performance?
 
+* * 4 and 6
 . You can use any IDE, you prefer.
 . You can use any database you prefer.
