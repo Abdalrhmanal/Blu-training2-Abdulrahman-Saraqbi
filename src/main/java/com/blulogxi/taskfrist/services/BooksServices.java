@@ -12,6 +12,7 @@ public interface BooksServices {
     // git All data Courses
     ResponseEntity<List<BookDto>> findAll();
 
+    // git books use pagination
     ResponseEntity<List<BookDto>> findAllpage(int page, int size);
 
     // git oun Course data

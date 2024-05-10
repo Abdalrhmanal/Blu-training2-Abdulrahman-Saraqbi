@@ -18,8 +18,8 @@ public class AppConfig {
     public BookMapper bookMapper() {
         return new BookMapparImpl();
     }
-    // هذا الملف من اجل ملئ الجدول بقاعدة البيانات ببيانات عشوائية ل 10 ريكوردات
-    // ويعتبر ايضا ملف اعدادات المشروع نستطيع اعداد به كل ما نريده في المشروع
+    // fill with Config Application
+    // Generating random data in the books table in the database when running the application
     @Bean
     CommandLineRunner initDatabase(BookRepositories bookRepositories, BookMapper bookMapper) {
         return args -> {

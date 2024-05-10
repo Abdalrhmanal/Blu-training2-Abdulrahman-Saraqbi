@@ -28,14 +28,14 @@ public class BookServiceImpl implements BooksServices {
         this.bookRepositories = bookRepositories;
 
     }
-// هذه الدالة تقوم بجلب جميع بيانات الكورسات في جدول الكورسات
+// git all Books in the table books
     @Override
     public ResponseEntity<List<BookDto>> findAll() {
         List<Book> books=this.bookRepositories.findAll();
         List<BookDto> bookDtos =books.stream().map(mapper::bookToBookDto).collect(Collectors.toList());
         return new ResponseEntity<>(bookDtos, HttpStatus.OK);
     }
-
+// function from git Books use pagination
     @Override
     public ResponseEntity<List<BookDto>> findAllpage(int page,int size) {
         Page<Book> bookPage = this.bookRepositories.findAll(PageRequest.of(page, size));
@@ -45,7 +45,7 @@ public class BookServiceImpl implements BooksServices {
         return new ResponseEntity<>(bookDtos,HttpStatus.OK);
     }
 
-// من شان نجيب بيانات كورس محدد findById هنا اعددنا دالة
+// git book with by id
     @Override
     public ResponseEntity<BookDto> findById(Long id) {
         Optional<Book> course=this.bookRepositories.findById(id);
@@ -55,8 +55,8 @@ public class BookServiceImpl implements BooksServices {
         BookDto bookDto =mapper.bookToBookDto(course.get());
         return new ResponseEntity<>(bookDto, HttpStatus.OK);
     }
-    // هذه الدوال لسع ما اشتغلتها
-        // هذه الدالة من اجل الاضافة
+
+    // create new book
     @Override
     public ResponseEntity<BookDto> create(AddBookDto addBookDto) {
         final Book book = mapper.addBookDtoToBook(addBookDto);
@@ -64,7 +64,7 @@ public class BookServiceImpl implements BooksServices {
         BookDto bookDto = mapper.bookToBookDto(createdBook);
         return new ResponseEntity<>(bookDto, HttpStatus.CREATED);
     }
-
+// upData book with by id book
     @Override
     public ResponseEntity<BookDto> update(Long id, AddBookDto newBook) {
 
@@ -82,7 +82,7 @@ public class BookServiceImpl implements BooksServices {
         BookDto courseDto = mapper.bookToBookDto(updatedBook);
         return new ResponseEntity<>(courseDto, HttpStatus.OK);
     }
-        // هذه الدالة من اجل الحذف
+        // delete book by id
         @Override
         public ResponseEntity<String> remove(Long id) {
 
@@ -93,7 +93,7 @@ public class BookServiceImpl implements BooksServices {
             this.bookRepositories.deleteById(id);
             return new ResponseEntity<>("Book has been removed successfully",HttpStatus.NO_CONTENT);
         }
-
+// search for a book by Author Or Title book ,Kay Word
         @Override
         public List<BookDto> searchBooks(String query) {
             List<Book> books = bookRepositories.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(query, query);
