@@ -23,7 +23,7 @@ public class AppConfig {
     @Bean
     CommandLineRunner initDatabase(BookRepositories bookRepositories, BookMapper bookMapper) {
         return args -> {
-            IntStream.rangeClosed(1,10).forEach(i -> {
+            IntStream.rangeClosed(1,20).forEach(i -> {
                 AddBookDto addBookDto =
                         new AddBookDto("Book #" + i,
                                 "Learn Courses in the book #" +i + " in the best way.",

@@ -7,6 +7,8 @@ import com.blulogxi.taskfrist.entities.mappears.BookMapparImpl;
 import com.blulogxi.taskfrist.entities.mappears.BookMapper;
 import com.blulogxi.taskfrist.reposeitories.books.BookRepositories;
 import com.blulogxi.taskfrist.services.BooksServices;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -33,6 +35,16 @@ public class BookServiceImpl implements BooksServices {
         List<BookDto> bookDtos =books.stream().map(mapper::bookToBookDto).collect(Collectors.toList());
         return new ResponseEntity<>(bookDtos, HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<List<BookDto>> findAllpage(int page,int size) {
+        Page<Book> bookPage = this.bookRepositories.findAll(PageRequest.of(page, size));
+        List<BookDto> bookDtos = bookPage.getContent().stream()
+                .map(mapper::bookToBookDto)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(bookDtos,HttpStatus.OK);
+    }
+
 // من شان نجيب بيانات كورس محدد findById هنا اعددنا دالة
     @Override
     public ResponseEntity<BookDto> findById(Long id) {

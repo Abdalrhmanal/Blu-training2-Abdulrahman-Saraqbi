@@ -17,7 +17,7 @@ import java.time.LocalDate;
 // هذا class من اجل انشاء جدول بقاعدة البيانات
 
 @Entity
-@Table(name = "books") //تحديد اسم الجدول بقاعدة البيانات
+@Table(name = "book") //تحديد اسم الجدول بقاعدة البيانات
 @Getter
 @Setter
 @NoArgsConstructor

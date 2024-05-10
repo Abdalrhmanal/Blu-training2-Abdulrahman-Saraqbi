@@ -11,6 +11,9 @@ import java.util.List;
 public interface BooksServices {
     // git All data Courses
     ResponseEntity<List<BookDto>> findAll();
+
+    ResponseEntity<List<BookDto>> findAllpage(int page, int size);
+
     // git oun Course data
     ResponseEntity<BookDto> findById(Long id);
     // create New Course

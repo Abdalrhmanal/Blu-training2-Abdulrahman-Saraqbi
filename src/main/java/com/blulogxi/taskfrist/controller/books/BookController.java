@@ -25,6 +25,13 @@ public class BookController {
    public ResponseEntity<List<BookDto>> getBooks() {
       return this.booksServices.findAll();
    }
+
+   @GetMapping("/")
+   public ResponseEntity<List<BookDto>> getBooks(@RequestParam(defaultValue = "0") int page,
+                                                 @RequestParam(defaultValue = "10") int size) {
+      return this.booksServices.findAllpage(page, size);
+   }
+
    // git data Course by id
    @GetMapping("/{bookid}")
    public ResponseEntity<BookDto> getBookById(@PathVariable Long bookid) {
